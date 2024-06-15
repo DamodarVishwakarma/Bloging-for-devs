@@ -1,0 +1,40 @@
+{% load static %}
+
+{% include "commons/layout/page_header.html" with title=title back_image=back_image %}
+
+<div>
+    <div class="blogContainer">
+        <div class="tabBox">
+            <h2>{{page_title}}</h2>
+            <div class="tabList">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home">Trending now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="home-tab-2" data-toggle="tab" href="#menu1">New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" id="select-options">
+                            <select name="cars" id="cars" aria-labelledby="select-options"><br /><br />
+                                <option data-url="/blogs/{{tech_slug}}/?days=2" value="2">Last 2 days</option>
+                                <option data-url="/blogs/{{tech_slug}}/?days=7" value="7">Last 7 days</option>
+                                <option data-url="/blogs/{{tech_slug}}/?days=30" value="30">Last 30 days</option>
+                            </select>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    {% include "blogs/_partial_list2.html" with object_list=object_list %}
+</div>
+<div class="tab-pane fade" id="menu1" role="tabpanel" aria-labelledby="home-tab">
+    {% include "blogs/_partial_list2.html" with object_list=today %}
+</div>
+
+{% include 'blogs/pagination.html' %}
+

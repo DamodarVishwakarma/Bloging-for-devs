@@ -1,0 +1,253 @@
+
+/* Trends page CSS */
+.trendText a {
+    color: #fff;
+    text-decoration: underline;
+}
+.trendsHeader {
+    padding: 8px 24px 16px;
+    background: linear-gradient(274.58deg,#e11dbc 9.71%,#c10ea0 50.88%,#702061 92.5%);
+}
+.trendsImg {
+    position: absolute;
+    top: 120px;
+    right: 40px;
+    width: 470px;
+    height: 284px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #22262B;
+}
+.trendsImg img { max-width: 100%; }
+.trendsPart {
+    position: absolute;
+    top: 340px;
+    right: 0;
+    bottom: 0px;
+    background-color: #3A6B7B;
+    border-radius: 8px;
+    color: #F4F8FC;
+    padding: 0px 24px 16px;
+    box-shadow: -4px -4px 4px rgb(0 0 0 / 10%);
+    font-size: 14px;
+    line-height: 24px;
+    width: 245px;
+}
+.trendsPart p, .trendsPart a { color: #fff; font-size: 15px; }
+.trendsPart a {
+    position: relative;
+    top: -20px;
+    font-size: 8px;
+    line-height: 14px;
+    padding: 4px 8px;
+    background-color: #000000;
+    border-radius: 4px;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 8px;
+    transform: scale(1);
+}
+.trendsbg {
+    position: absolute;
+    height: 500px;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    background: linear-gradient(360deg,#191c20 0%,rgba(25,28,32,0) 28.79%);
+}
+.patternBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('images/download.svg');
+}
+.trendsContainer {
+    margin: 100px 0 50px;
+}
+.discoverSection { height: 600px; color: #E3E9F0; }
+.discoverSectionListing {
+    padding: 24px 0;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+.discoverHeadingDiv {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.discoverHeadingDiv h2 {
+    letter-spacing: 2px;
+    font-size: 16px;
+    color: #40a9ff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.discoverSearchField {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+}
+.discoverSearchField {
+    border: 0;
+    margin: 0;
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    flex-direction: column;
+    vertical-align: top;
+}
+.searchInputDiv {
+    position: relative;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: text;
+    display: inline-flex;    
+    font-size: 1rem;
+    box-sizing: border-box;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.1876em;
+}
+.searchIconDiv {
+    color: #767E87;
+    margin-right: 8px;
+    height: 0.01em;
+    display: flex;
+    max-height: 2em;
+    align-items: center;
+    white-space: nowrap;
+}
+.searchInputDiv::before {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "\00a0";
+    position: absolute;
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    pointer-events: none;
+    border-bottom-color: #A4ACB6;
+}
+.searchInputField {
+    font: inherit;
+    color: #A4ACB6;
+    width: 100%;
+    border: 0;
+    height: 1.1876em;
+    margin: 0;
+    display: block;
+    padding: 6px 0 7px;
+    min-width: 0;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    -webkit-tap-highlight-color: transparent;
+}
+.listingSection {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    display: grid;
+    grid-template-rows: repeat(10,48px);
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 32px;
+}
+.discoverListCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.discoverListCard a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 9px;
+    border-radius: 4px;
+    background-color: #111216;
+    margin-bottom: 8px;
+    transform: scale(1);
+    transition: transform 0.1s ease-in;
+    border: 1px solid transparent;
+}
+.svg-wrapper {
+    width: 18px;
+    display: inline-block;
+    margin-right: 8px;
+}
+.svg-wrapper svg {
+    width: 18px;
+    position: relative;
+    top: 0px;
+}
+.discoverCardText {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    background: #111216;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #E3E9F0;
+}
+.discoverRedIcon {
+    display: block;
+    color: #ff4d4f;
+    margin: 0 auto;
+    padding-left: 5px;
+}
+.discoverGreenIcon {
+    display: block;
+    color: #25d787;
+    margin: 0 auto;
+    padding-left: 5px;
+}
+.discoverBlog {
+    display: grid;
+    max-width: 1120px;
+    margin: 16px auto;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 32px;
+}
+.discoverBlog h2 {
+    font-size: 16px;
+    color: #3A6B7B;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.discoverBlog p {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+.discoverBlog button {
+    padding: 8px 22px;
+    font-size: 0.9375rem;
+    color: #fff;
+    background: linear-gradient(45deg,#3a6b7bc9 30%,#3A6B7B 90%);
+    box-shadow: 0 1px 5px 0px rgb(0 80 179 / 30%);
+    font-weight: 700;
+    background-color: #3A6B7B;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    line-height: 1.75;
+    border-radius: 8px;
+    text-transform: uppercase;
+    border: none;
+}

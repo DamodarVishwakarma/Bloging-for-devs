@@ -1,0 +1,10 @@
+#!/bin/sh
+cd /var/www/buildblog
+git pull origin master
+source /var/www/.venv/bin/activate
+pip3 install -r requirements.txt
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py loaddata buildblog/fixtures/blog/technology.json
+python3 manage.py collectstatic --noinput
+sudo service apache2 restart

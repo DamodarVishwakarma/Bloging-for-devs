@@ -1,0 +1,15 @@
+Django
+django-crispy-forms
+Pillow
+django-bootstrap-modal-forms
+psycopg2-binary
+python-decouple
+django-widget-tweaks
+six
+django-social-share
+djangorestframework
+django-robots
+django-simple-captcha
+django-widget-tweaks
+django-ckeditor
+

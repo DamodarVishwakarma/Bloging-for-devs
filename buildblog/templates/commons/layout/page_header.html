@@ -1,0 +1,17 @@
+<div class="header">
+    <div class="contentSection">
+        <div class="darkHeadingBox">
+            <a mode="light" class="darkHeading" href="{% url 'blog:trend_list' %}">BuildBlog for Developer<div class="headingBox">Trends</div></a>
+            {% if user.is_authenticated %}
+                <div mode="light" class="lgHeadingBox">It's free:<a class="css-8sfwpu" href="{% url 'blog:blog_create' %}">BuildBlog for Developers</a></div>
+            {% else %}
+                <div mode="light" class="lgHeadingBox">It's free:<botton class="css-8sfwpu btn btn-light " href="{% url 'core:login' %}?next={{request.path}}">BuildBlog for Developers</botton></div>
+            {% endif %}
+        </div>
+        <div class="contentBox">
+            <h1>{{title}}</h1>
+            <div mode="light" class="text"><strong>Updated Hourly</strong> (<a href="#">How it Works</a>)
+            </div>
+        </div>
+    </div>
+</div>

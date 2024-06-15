@@ -1,0 +1,67 @@
+<div class="footer">
+    <div class="footerBox">
+        <div>
+            {% if user.is_authenticated %}
+                <a aria-current="page" class="footerHeading" href="{% url 'blog:blog_create' %}">BuildBlog for Developers</a>
+            {% else %}
+                <a aria-current="page" class="footerHeading"><button class="sm-text btn btn-dark" href="{% url 'core:login' %}?next={{request.path}}">BuildBlog for Developers</button></a>
+            {% endif %}
+            <span class="footerSubheading">Developed  by<!-- -->
+                <a href="https://twitter.com/vksipl027" target="_blank" rel="noopener" class="darkBox">@VK</a>
+            </span>
+            <span class="footerSubheading">Made by<!-- -->
+                <a href="https://www.santophy.com/" target="_blank" rel="noopener" class="darkBox">@SIPL</a>
+            </span>
+            <p class="pt-3 pb-3">Learn how to grow your blog as a developer without an existing audience through great writing and SEO.</p>
+            <ul class="firstList">
+                <li><a aria-current="page" class="" href="{% url 'core:home' %}">Home</a></li>
+                <li><a href="{% url 'core:contact_us' %}">Contact</a></li>
+                <li><a href="javascript:void(0)">Impressum</a></li>
+                <li><a href="javascript:void(0)">Become a Sponsor</a></li>
+            </ul>
+        </div>
+        <div class="footerListBox">
+            <div>
+                <div class="listHeading">Resources</div>
+                <ul class="listBox">
+                    <li><a aria-current="page" class="" href="javascript:void(0)">Free Course</a></li>
+                    <li><a href="{% url 'blog:tech_list' %}">Blog</a></li>
+                    <li><a href="javascript:void(0)">Interviews</a></li>
+                    <li><a href="https://seofordevs.com/" target="_blank">SEO for Developers</a></li>
+                    <li><a href="javascript:void(0)">Developer Blogs</a></li>
+                    <li><a aria-current="page" class="view-all" href="{% url 'core:home' %}">Home</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="listHeading">Community</div>
+                <ul class="listBox">
+                    {% if user.is_authenticated %}
+                        <button id="login-ft" class="footerBtn" tabindex="0" type="button">
+                            <span class="footerLabel"><a href="{% url 'core:logout' %}">LOG OUT</a></span>
+                        </button>
+                    {% else %}
+                        <li> <a href="{% url 'core:signup' %}"><button id="signup-ft" class="footerBtn" tabindex="0" type="button" >
+                            <span class="footerLabel">Join Us</span></a>
+                        </button> <span class="css-1hvhxos">New</span></li>
+                        <!-- <li><a id="signup-ft">Join Us</a> <span class="css-1hvhxos">New</span></li> -->
+                        <li><a href="{% url 'core:password_reset' %}">Reset Password</a></li>
+                        <button id="login-ft" class="footerBtn" tabindex="0" type="button">
+                            <span class="footerLabel"> <a  href="{% url 'core:login' %}?next={{request.path}}">LOG IN</a></span>
+                        </button>
+                    {% endif %}
+                    <li><a href="javascript:void(0)">Live Events</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="listHeading">Discover</div>
+                <ul class="listBox">
+                    <li><a href="{% url 'blog:blog_list' slug='javascript' %}">JavaScript Blogs</a></li>
+                    <li><a href="{% url 'blog:blog_list' slug='python' %}">Python Blogs</a></li>
+                    <li><a href="{% url 'blog:blog_list' slug='ruby' %}">Ruby Blogs</a></li>
+                    <li><a href="{% url 'blog:blog_list' slug='react' %}">React.js Blogs</a></li>
+                    <li><a class="view-all" href="{% url 'blog:tech_list' %}">View All</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

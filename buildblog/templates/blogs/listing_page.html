@@ -1,0 +1,149 @@
+{% extends "__base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/trends_listing.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="trendsHeader">
+    <div class="contentSection">
+        <div class="darkHeadingBox">
+            {% if user.is_authenticated %}
+                <a mode="light" class="darkHeading" href="{% url 'blog:blog_create' %}">Make your Build Blog<div class="headingBox">Pro</div></a>
+            {% else %}
+                <a mode="light" class="darkHeading"  href="{% url 'core:login' %}?next={{request.path}}">Make your Build Blog<div class="headingBox">Pro</div></a>
+            {% endif %}
+
+        </div>
+
+        <div class="joinBox">
+            <h1>Discover the best developer blogs on any tech stack</h1>
+            <div mode="light" class="text">Discover the best developer blogs on any tech stack</div>
+            <div mode="light" class=" trendText"> <a href="#">How it Works</a></div>
+        </div>
+    </div>
+</div>
+<div>
+    <div pattern="topography" class="css-1n7gx3f">
+    </div>
+</div>
+</div>
+
+<div class="trendsContainer">
+    <div id="all-topics" class="discoverSection">
+        <div class="discoverSectionListing">
+            <div class="discoverHeadingDiv">
+                <h2>Discover more developer blogs</h2>
+                <div>
+                    <div class="discoverSearchField">
+                        <div class="searchInputDiv">
+                            <div class="searchIconDiv">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                           <form method="get" action="">
+                            <input type="search" aria-invalid="false" id="search" name="keyword"
+                                placeholder="&nbsp;Search by technology" class="searchInputField" />
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="listingSection">
+                    {% for tech in techs %}
+                    <div class="discoverListCard">
+                        <a href="{% url 'blog:blog_list' tech.slug %}">
+                            <span>
+                                <span class="svg-wrapper">
+
+                                    {% if tech.icon %}
+                                        <img src="{{ tech.icon.url}}" />
+                                    {% else %}
+                                        <img src="{% static 'img/blogging-platform.svg' %} ">
+                                    {% endif %}
+
+                                </span>{{tech.name}}
+                            </span>
+                            <span class="discoverCardText"><span>100</span>
+                                <span class="discoverGreenIcon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="discoverBlog">
+    <div>
+        <h2>Claim your blog</h2>
+        <p>If your blog's been submitted by someone else and you want to update its categories or description, send an
+            email to trends@bloggingfordevs.com via the email address listed on your website ✌️</p>
+    </div>
+    <div>
+        <h2>Share this resource</h2>
+        <p>The more people know about Trends, the more developers' blogs are discovered and followed. Help us get the
+            word out!</p>
+        <a class="mt-3 mb-3" tabindex="0" aria-disabled="false"
+            href="http://www.linkedin.com/shareArticle?url=https://73d4-2401-4900-55ab-a63b-649e-d15c-bb02-e305.in.ngrok.io{{ request.get_full_path|urlencode }}"
+            target="_blank">
+            <button tabindex="0" type="button">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 110 110" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="#0076b2"
+                            d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3z">
+                        </path>
+                        <path fill="#fff"
+                            d="M21.06 48.73h18.11V107H21.06zm9.06-29a10.5 10.5 0 11-10.5 10.49 10.5 10.5 0 0110.5-10.49M50.53 48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75v32H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53z">
+                        </path>
+                    </svg> &nbsp; Share this on LinkedIn
+                </span>
+                <span class="MuiTouchRipple-root"></span>
+            </button>
+        </a>
+    </div>
+    <div>
+        <h2>Acknowledgements</h2>
+        <p>These rankings were originally inspired by the Detailed.com list of
+            <!-- --> <a href="https://detailed.com/50/" target="_blank">best blogs</a>. SVG Patterns are from
+            <!-- --> <a href="https://www.heropatterns.com/" target="_blank">Hero Patterns</a> <!-- -->and many icons
+            are from
+            <!-- --> <a href="https://devicon.dev/" target="_blank">Devicon</a>. Thanks also to everyone who's submitted
+            blogs and shared their feedback!
+        </p>
+    </div>
+</div>
+{% endblock content %}
+{% block extra_js %}
+<script>
+    $(document).ready(function () {
+        var isOpen = false;
+        $('.fa-angle-down').show();
+        $(".fa-angle-up").hide();
+        $('.card-header').click(function () {
+            if (isOpen == false) {
+                isOpen = true;
+                $(this).find('.fa-angle-down').css("display", "block");
+                $(this).find(".fa-angle-up").css("display", "none");
+            } else {
+                isOpen = false;
+
+                $(this).find('.fa-angle-down').css("display", "none");
+                $(this).find(".fa-angle-up").css("display", "block");
+            }
+        });
+    });
+</script>
+
+{% endblock extra_js %}

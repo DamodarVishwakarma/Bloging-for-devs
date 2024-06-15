@@ -1,0 +1,7 @@
+{% extends "__base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include "blogs/_partial_list.html" with page_title=page_title tech_slug=tech_slug %}
+    {% include "blogs/share_section.html" %}
+{% endblock content %}

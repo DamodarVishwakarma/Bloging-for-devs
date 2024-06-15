@@ -1,0 +1,41 @@
+{% load static %}
+<header class="header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="/"><img src="{% static 'img/logo.png' %}" alt="" class="logo-img"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'blog:tech_list' %}">Blogs</a>
+                    <a class="nav-item nav-link" href="{% url 'core:about' %}">About</a>
+                    <a class="nav-item nav-link" href="{% url 'core:contact_us' %}">Contact</a>
+                </div>
+
+                <!-- slug=technology.slug  -->
+                <!-- Navbar Right Side -->
+
+                <div class="navbar-nav">
+                    {% if request.user.is_authenticated %}
+                        <div class="dropdown">
+                          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" style="margin-right: -5px;" href="{% url 'core:profile' user.id %}">Profile</a>
+                            <a class="dropdown-item" style="margin-top: 8px;" href="{% url 'core:change_password' %}">Change Password</a>
+                            <a class="dropdown-item" style="margin-top: 8px;" href="{% url 'core:logout' %}">Logout</a>
+                          </div>
+                        </div>
+                    {% else %}
+                        <a class="nav-item nav-link" style="margin-right: -15px;" id="login-btn" class="btn nav-link" type="button" href="{% url 'core:login' %}?next={{request.path}}">Login</a>&nbsp;
+                        <a class="nav-item nav-link" style="margin-right: -7px;" class="btn nav-link" type="button" href="{% url 'core:signup' %}">Join Us</a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+</header>

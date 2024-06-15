@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>{% block title %} BuildBlog {% endblock title %}</title>
+
+    {% block head_favicon %}
+        <link rel="icon" type="image/png" href='{% static "img/favicon.ico" %}'>
+    {% endblock head_favicon %}
+
+    {% block head_meta %}
+    {% block head_meta_charset %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% endblock head_meta_charset %}
+    {% block head_meta_contentlanguage %}
+
+    <meta http-equiv="Content-Language" value="en-US" />
+
+    {% endblock head_meta_contentlanguage %}
+    {% block head_meta_viewport %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Santophy Infotech Private Limited">
+
+    {% block profile_image_meta %}
+    {% endblock profile_image_meta %}
+
+    <meta name="description" content="">
+
+    {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+
+    {% block head_css %}
+    {% block head_css_site %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" />
+    {% endblock head_css_site %}
+    {% block extra_css %}
+    {% endblock extra_css %}
+    {% endblock head_css %}
+
+
+</head>
+
+<body>
+    {# Navigation Menu #}
+    {% block header %}
+        <!-- ======= Header ======= -->
+        {% include "commons/layout/header.html" %}
+    {% endblock header %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {# The Footer #}
+    {% block footer %}
+        {% include "commons/layout/footer.html" %}
+    {% endblock footer %}
+
+    {# Set of blocks that can be used to display JavaScript files #}
+    {% block js %}
+        <script src="{% static 'js/jquery.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+
+        <!-- You can alternatively load the minified version -->
+        <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock extra_js %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(function () {
+                    $("#signup-btn , #signup-ft , .bottomBtn").modalForm({
+                        formURL: "{% url 'core:signup' %}"
+                    });
+                    $("#login-btn , #login-ft , .css-8sfwpu , .btn-dark, .btn-outline-info").modalForm({
+                        formURL: "{% url 'core:login' %}?next={{request.path}}"
+                    });
+                    $("#profile-btn").each(function () {
+                        $(this).modalForm({ formURL: $(this).data("form-url") });
+                    });
+                });
+
+                $('#cars').on('change', function () {
+                    var e = document.getElementById("cars");
+                    var endpoint = e.options[e.selectedIndex].dataset.url;
+                    var value = this.options[this.selectedIndex].value;
+
+                    $.ajax({
+                        type: "GET",
+                        url: endpoint,
+                        dataType: "json",
+                        success: (response) => {
+                            debugger
+                            console.log(response);
+                            $("#filteredBlogs").html(response.data);
+                        },
+                        error: (error) => {
+                            console.log(error);
+
+                        }
+                    });
+
+                });
+            });
+
+            $(document).on('click', '#like-button', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "blog:blog_likes" %}',
+                    data: {
+                        postid: $('#like-button').val(),
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        action: 'post'
+                    },
+                    success: function (res) {
+                        document.getElementById("like_count").innerHTML = res['result']
+                        
+                    },
+                    error: function (xhr, errmsg, err) {
+
+                    }
+                });
+            });
+        </script>
+
+    {% endblock js %}
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+{% load static %}
+{% load social_share %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/share_section.css' %}">
+{% endblock extra_css %}
+<div class="collectionSection mt-4">
+    <div class="collectionBox">
+        <div>
+            <h2 class="mt-4 mb-4">Like this collection of <!-- -->{{page_title}}<!-- -->?</h2>
+            <div class="collectionCard">
+                <div>
+                    <img src="{% static 'images/bg.jpg' %}" alt="Best Blogs" class="img-fluid">
+                </div>
+                <div class="collectionContent">
+                    <p>We're trying to create the best place to find quality and creative content, written by individual developers and technical experts. Help us get the word out!</p>
+                    <a class="mt-2 mb-2" tabindex="0" aria-disabled="false" href="http://www.linkedin.com/shareArticle?url=https://73d4-2401-4900-55ab-a63b-649e-d15c-bb02-e305.in.ngrok.io{{ request.get_full_path|urlencode }}">
+                        <span class="collectionLabel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path fill="#0076b2" d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3z"></path><path fill="#fff" d="M21.06 48.73h18.11V107H21.06zm9.06-29a10.5 10.5 0 11-10.5 10.49 10.5 10.5 0 0110.5-10.49M50.53 48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75v32H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53z"></path>
+                            </svg> &nbsp;Share this on LinkedIn
+                        </span>
+                        <span class="MuiTouchRipple-root"></span>
+                    </a><br>
+                    <!-- <button class="btn btn-primary"><span
+                        class="fab fa-facebook">{% post_to_facebook data "Share this on LinkedIn" %}</span></button> -->
+                    <a href="{% url 'blog:blog_create' %}"><span class="collectionLabel">Or, recommend a blog</span><span class="innerLabel"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collectionCardListSection">
+    <div class="collectionHeadingList">
+        <h2 class="css-n8eosr">Read Software Blogs on Related Topics</h2>
+        <a href="#">Back to all topics</a>
+    </div>
+    <div class="collectioncardList">
+        <a href="/blogs/web-development">
+            <h3>Web Development<!-- --> Blogs</h3>
+            <div class="collectionIcon">
+                <svg viewBox="0 0 128 128">
+                    <path fill="#1890FF" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387 10.015-112.107h-109.936zm89.126 26.539l-.627 7.172-.276 3.289h-52.665000000000006l1.257 14h50.156000000000006l-.336 3.471-3.233 36.119-.238 2.27-28.196 7.749v.002l-.034.018-28.177-7.423-1.913-21.206h13.815000000000001l.979 10.919 15.287 4.081h.043v-.546l15.355-3.875 1.604-17.579h-47.698l-3.383-38.117-.329-3.883h68.939l-.33 3.539z"></path>
+                </svg>
+            </div>
+        </a>
+        <a href="/blogs/python">
+            <h3>Python<!-- --> Blogs</h3>
+            <div class="collectionIcon">
+                <svg viewBox="0 0 128 128">
+                    <path fill="#8489EF" d="M49.33 62h29.159c8.117 0 14.511-6.868 14.511-15.019v-27.798c0-7.912-6.632-13.856-14.555-15.176-5.014-.835-10.195-1.215-15.187-1.191-4.99.023-9.612.448-13.805 1.191-12.355 2.181-14.453 6.751-14.453 15.176v10.817h29v4h-40.224000000000004c-8.484 0-15.914 5.108-18.237 14.811-2.681 11.12-2.8 17.919 0 29.53 2.075 8.642 7.03 14.659 15.515 14.659h9.946v-13.048c0-9.637 8.428-17.952 18.33-17.952zm-1.838-39.11c-3.026 0-5.478-2.479-5.478-5.545 0-3.079 2.451-5.581 5.478-5.581 3.015 0 5.479 2.502 5.479 5.581-.001 3.066-2.465 5.545-5.479 5.545zM122.281 48.811c-2.098-8.448-6.103-14.811-14.599-14.811h-10.682v12.981c0 10.05-8.794 18.019-18.511 18.019h-29.159c-7.988 0-14.33 7.326-14.33 15.326v27.8c0 7.91 6.745 12.564 14.462 14.834 9.242 2.717 17.994 3.208 29.051 0 7.349-2.129 14.487-6.411 14.487-14.834v-11.126h-29v-4h43.682c8.484 0 11.647-5.776 14.599-14.66 3.047-9.145 2.916-17.799 0-29.529zm-41.955 55.606c3.027 0 5.479 2.479 5.479 5.547 0 3.076-2.451 5.579-5.479 5.579-3.015 0-5.478-2.502-5.478-5.579 0-3.068 2.463-5.547 5.478-5.547z"></path>
+                </svg>
+            </div>
+        </a>
+        <a href="/blogs/machine-learning">
+            <h3>Machine Learning<!-- --> Blogs</h3>
+            <div class="collectionIcon"></div>
+        </a>
+    </div>
+    <p class="mt-5  pl-3 pr-3"><strong>Acknowledgements</strong> — Thanks to<!-- --> 
+        <a href="#" target="_blank" class="collectionBorder">Hero Patterns</a> <!-- -->and<!-- --> 
+        <a href="#" target="_blank" >Devicon</a> <!-- -->for SVG assets used on this site. Plus, thanks to everyone who's submitted their favorite blogs so far! We'd love your suggestions for how to make this list better on Twitter,<!-- --> 
+        <a href="#" target="_blank" >@buildblog</a>.
+    </p>
+</div>
+
+

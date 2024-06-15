@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo apt update
+# Destination folder
+cd /var/www/buildblog
+# AWS CLI needed to get parameters
+sudo apt install -y awscli
+source /var/www/.venv/bin/activate
+pip3 install -r requirements.txt

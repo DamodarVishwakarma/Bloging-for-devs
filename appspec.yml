@@ -1,0 +1,24 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/buildblog
+file_exists_behavior: OVERWRITE
+permissions:
+  - object: /var/www/buildblog
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+hooks:
+  AfterInstall:
+    - location: devops/scripts/install_dependencies
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: devops/scripts/start_server
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: devops/scripts/stop_server
+      timeout: 300
+      runas: root

@@ -1,0 +1,39 @@
+{% extends "__base.html" %}
+{% block content %}
+<div class="article__head">
+  <div class="article__content">
+    <article class="media content-section">
+      <!--  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">-->
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ object.author }}</a>
+          <small class="text-muted">{{ object.published_at|date:"F d, Y" }}</small>
+
+          <h2 class="article-title">{{ object.title }}</h2>
+          <hr>
+          <br>
+          <img style='' src="{{ object.image.url }}" width="400" height="250">
+          <br>
+          <p class="article-content" style="color: black;">{{ object.contents|safe}}</p>
+          <br>
+          <video width='400' controls>
+            <source src="{{ object.video.url }}" type='video/mp4'>
+            Your browser does not support the video tag.
+          </video>
+          <br>
+          <hr>
+          {% if user.is_authenticated %}
+          <div style="text-align:right">
+            <a href="{% url 'blog:blog_update' object.id %}"><i class="material-icons" title="Edit">&#xE254;</i></a>
+            <!-- <a href="{% url 'blog:blog_delete' object.id %}"><i class="material-icons" style="color:red;"
+                title="Delete">&#xE872;</i></a> -->
+          </div>
+          {% endif %}
+          <a href="{{ object.url }}" target="_blank">{{ object.url_text }}</a>
+        </div>
+        {% include 'blogs/blog_like.html' with data=data %}
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock content %}
